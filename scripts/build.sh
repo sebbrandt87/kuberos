@@ -22,10 +22,11 @@ go build -o "${DIST}/kuberos" ./cmd/kuberos
 
 # Build the frontend
 pushd frontend
+    npm install
     npm run build
 popd
 
 # Create the docker image
 VERSION=$(git rev-parse --short HEAD)
-docker build --tag "negz/kuberos:latest" .
-docker build --tag "negz/kuberos:${VERSION}" .
+docker build --tag "sebbrandt87/kuberos:latest" .
+docker build --tag "sebbrandt87/kuberos:${VERSION}" .

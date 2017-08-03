@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/negz/kuberos/extractor"
+	"github.com/sebbrandt87/kuberos/extractor"
 
 	oidc "github.com/coreos/go-oidc"
 	"golang.org/x/oauth2"

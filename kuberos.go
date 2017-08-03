@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/negz/kuberos/extractor"
+	"github.com/sebbrandt87/kuberos/extractor"
 
 	oidc "github.com/coreos/go-oidc"
 	"github.com/gorilla/schema"
@@ -49,7 +49,7 @@ const (
 var (
 	// DefaultScopes are the minimum required oauth2 scopes for every
 	// authentication request.
-	DefaultScopes = []string{oidc.ScopeOpenID, "profile", "email"}
+	DefaultScopes = []string{oidc.ScopeOpenID, "profile", "groups", "email"}
 
 	// ErrInvalidKubeCfgEndpoint indicates an unparseable redirect endpoint.
 	ErrInvalidKubeCfgEndpoint = errors.New("invalid redirect endpoint")
