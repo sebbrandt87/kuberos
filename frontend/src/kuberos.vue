@@ -34,3 +34,46 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'kuberos',
+  data: function() {
+    return {
+      error: null,
+      kubecfg: {
+        email: "",
+        groups: "",
+        clientID: "",
+        clientSecret: "",
+        idToken: "",
+        refreshToken: "",
+        issuer: ""
+      }
+    }
+  },
+  methods: {
+    'templateURL': function() {
+      return "/kubecfg.yaml?" + $.param(this.kubecfg);
+    }
+  },
+  created: function() {
+    var q = decodeURI(location.search.substr(1))
+      .replace(/"/g, '\\"')
+      .replace(/&/g, '","')
+      .replace(/=/g,'":"');
+    var query = "";
+    if (q != "") {
+      query = JSON.parse('{"' + q + '"}');
+    }
+    var url = "/kubecfg?" + $.param(query);
+
+    var _this = this;
+    this.axios.get(url).then(function(response) {
+      _this.kubecfg = response.data;
+    }).catch(function(error) {
+      _this.error = error;
+    })
+  }
+}
+</script>

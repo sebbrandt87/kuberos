@@ -35,7 +35,7 @@ const (
 	urlParamErrorDescription = "error_description"
 	urlParamErrorURI         = "error_uri"
 
-	templateUser             = "kuberos"
+	templateUser             = "xing-developer"
 	templateAuthProvider     = "oidc"
 	templateOIDCClientID     = "client-id"
 	templateOIDCClientSecret = "client-secret"
