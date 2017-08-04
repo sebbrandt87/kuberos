@@ -5,7 +5,11 @@
     </div>
     <div v-else>
       <div class="container">
-        <div class="row"><br/></div>
+        <div class="row">
+          <div class="jumbotron">
+            <h1>Kuberos</h1>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-1"></div>
@@ -14,7 +18,7 @@
               Execute the following commands to be able to authenticate yourself against kubernetes cluster with <code>kubectl</code>:
             </p>
             <pre>
-            $ kubectl config set-credentials "{{kubecfg.email}}" \
+            $ kubectl config set-credentials "xing-developer@{{kubecfg.clientID}}" \
               --auth-provider=oidc \
               --auth-provider-arg=client-id="{{kubecfg.clientID}}" \
               --auth-provider-arg=client-secret="{{kubecfg.clientSecret}}" \
@@ -24,9 +28,9 @@
             </pre>
             Then this one to associate your user with an existing cluster:
             <pre>
-            $ kubectl config set-context mycontext \
-              --cluster mycluster \
-              --user="{{kubecfg.email}}"
+            $ kubectl config set-context "{{kubecfg.clientID}}" \
+              --cluster "{{kubecfg.clientID}}" \
+              --user="xing-developer@{{kubecfg.clientID}}"
             </pre>
           <div class="col-md-1"></div>
         </div>
@@ -37,13 +41,11 @@
 
 <script>
 export default {
-  name: 'kuberos',
   data: function() {
     return {
       error: null,
       kubecfg: {
         email: "",
-        groups: "",
         clientID: "",
         clientSecret: "",
         idToken: "",
